@@ -12,6 +12,7 @@ import com.gigasys.customerrepo.exception.mappers.NoResultExceptionMapper;
 import com.gigasys.customerrepo.exception.mappers.NotFoundExceptionMapper;
 import com.gigasys.customerrepo.exception.mappers.WebapplicationExceptionMapper;
 
+import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 import jakarta.ws.rs.ApplicationPath;
 
 /**
@@ -26,6 +27,9 @@ public class JerseyConfig extends ResourceConfig {
 	public JerseyConfig() {
 		// Evite que Jersey ne redirige vers une page d'erreur (qui n'existe pas d'où un 404) en cas d'exception
 		property(ServerProperties.RESPONSE_SET_STATUS_OVER_SEND_ERROR, true);
+		
+		// Swagger
+		register(OpenApiResource.class);
 		
 		// Controllers
 		register(CustomerResource.class);
