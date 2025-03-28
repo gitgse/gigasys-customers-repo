@@ -1,4 +1,4 @@
-package com.gigasys.customersrepo;
+package com.gigasys.customerrepo;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
