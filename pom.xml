@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.gigasys</groupId>
 	<artifactId>customerrepo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>customerrepo</name>
 	<description>Customers Rest Repository for fictional Gigasys manufacturer</description>
