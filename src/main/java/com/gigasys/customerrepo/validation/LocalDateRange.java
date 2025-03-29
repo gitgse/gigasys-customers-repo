@@ -7,6 +7,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * LocalDateRange.java
+ * Annotation de validation permettant de tester si une date est
+ * située dans un intervalle (pouvant éventuellement être ouvert)
+ * @author Gilles
+ */
 @Constraint(validatedBy = LocalDateRangeValidator.class)
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
