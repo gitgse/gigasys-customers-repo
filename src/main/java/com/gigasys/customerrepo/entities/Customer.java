@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import static com.gigasys.customerrepo.common.Constants.*;
 
 /**
  * Customer.java
@@ -41,40 +42,40 @@ public class Customer {
 	@Enumerated(EnumType.STRING)
 	private Category category;
 
-	@Length(max = 255)
+	@Length(max = CUSTOMER_NAME_MAX_SIZE)
 	private String name;
-	@Length(max = 255)
+	@Length(max = CUSTOMER_FIRSTNAME_MAX_SIZE)
 	private String firstname;
 
 	private LocalDate since;
 
-	@Length(max = 255)
+	@Length(max = EMAIL_MAX_SIZE)
 	private String email;
-	@Length(max = 16)
+	@Length(max = PHONE_MAX_SIZE)
 	private String phone;
 
 	@Column(name = "address_number")
 	private Integer addressNumber;
-	@Length(max = 255)
+	@Length(max = STREET_MAX_SIZE)
 	@Column(name = "address_street")
 	private String addressStreet;
-	@Length(max = 255)
+	@Length(max = ADDRESS_DETAILS_MAX_SIZE)
 	@Column(name = "address_details")
 	private String addressDetails;
-	@Length(max = 10)
+	@Length(max = POSTAL_CODE_MAX_SIZE)
 	@Column(name = "address_postalcode")
 	private String addressPostalcode;
-	@Length(max = 255)
+	@Length(max = CITY_MAX_SIZE)
 	@Column(name = "address_city")
 	private String addressCity;
-	@Length(max = 255)
+	@Length(max = REGION_MAX_SIZE)
 	@Column(name = "address_region")
 	private String addressRegion;
-	@Length(min = 2, max = 2)
+	@Length(min = COUNTRY_SIZE, max = COUNTRY_SIZE)
 	@Column(name = "address_country")
 	private String addressCountry;
 
-	@Length(max = 72)
+	@Length(max = ENCRYPTED_PASSWORD_SIZE)
 	private String password;
 
 }
