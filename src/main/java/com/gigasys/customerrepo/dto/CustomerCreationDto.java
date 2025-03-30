@@ -35,7 +35,7 @@ public class CustomerCreationDto {
 	@NotBlank
 	private String name;
 	@Size(min = 1, max = 255)
-	private String firstName;
+	private String firstname;
 
 	@LocalDateRange(min = GIGASYS_CREATION_DATE, message = BAD_CUSTOMER_SINCE_DESCRIPTION)
 	@NotNull
