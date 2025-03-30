@@ -14,8 +14,8 @@ import jakarta.ws.rs.core.Response.Status;
 import jakarta.ws.rs.ext.ExceptionMapper;
 
 /**
- * NotFoundExceptionMapper.java
- * Exception Mapper prenant en charge les exceptions NoResult
+ * ConstraintViolationExceptionMapper.java
+ * Exception Mapper prenant en charge les exceptions ConstraintViolation
  * @author Gilles
  */
 public class ConstraintViolationExceptionMapper implements ExceptionMapper<ConstraintViolationException> {
