@@ -100,6 +100,8 @@ public class CustomerResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response add(@Valid CustomerCreationDto customerCreationDto) throws URISyntaxException {
+		// C'est une création, on force l'ID à null
+		customerCreationDto.setCustomerId(null);
 		var savedCustomer = customerService.save(customerCreationDto);
 		return Response.created(new URI(ENDPOINT_CUSTOMERS + "/" + savedCustomer.getCustomerId()))
 				.entity(savedCustomer)
