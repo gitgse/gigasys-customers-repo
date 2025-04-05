@@ -16,6 +16,8 @@ public class ConstantsJerseySwagger {
 	
 	public static final String CODE_OK = "200";
 	
+	public static final String CODE_CREATED = "201";
+	
 	public static final String CODE_NO_CONTENT = "204";
 
 	public static final String CODE_TECHNICAL_ERROR = "500";
