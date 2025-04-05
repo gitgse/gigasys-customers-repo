@@ -2,6 +2,7 @@ package com.gigasys.customerrepo.api;
 
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.BAD_REQUEST_DESCRIPTION;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_BAD_REQUEST;
+import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_CREATED;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_NOT_FOUND;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_NO_CONTENT;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_OK;
@@ -75,7 +76,7 @@ public class CustomerResource {
 			Customers can be matched on any of the filters below or none to retrieve the full list of all customers.\n
 			`All filters are optional and case insensitive`.
 			""")
-	@ApiResponse(responseCode = CODE_OK, description = "List of matching clients (can be empty)",
+	@ApiResponse(responseCode = CODE_OK, description = "The request was successfully processed",
 		content = @Content(array = @ArraySchema(schema = @Schema(implementation = CustomerDto.class))))
 	@ApiResponse(responseCode = CODE_BAD_REQUEST, description = BAD_REQUEST_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
@@ -96,7 +97,7 @@ public class CustomerResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
 	@Operation(summary = "Get the customer with the specified ID")
-	@ApiResponse(responseCode = CODE_OK, description = "The requested customer informations",
+	@ApiResponse(responseCode = CODE_OK, description = "The requested customer's informations were found",
 		content = @Content(schema = @Schema(implementation = CustomerDto.class)))
 	@ApiResponse(responseCode = CODE_NOT_FOUND, description = NOT_FOUND_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
@@ -122,7 +123,7 @@ public class CustomerResource {
 	@Operation(summary = "Update the customer with the specified ID with the supplied informations", description = """
 			The request body must contain a valid customer description.
 	""")
-	@ApiResponse(responseCode = CODE_OK, description = "The updated customer's informations",
+	@ApiResponse(responseCode = CODE_OK, description = "The customer's informations where successfully updated",
 		content = @Content(schema = @Schema(implementation = CustomerDto.class)))
 	@ApiResponse(responseCode = CODE_NOT_FOUND, description = NOT_FOUND_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
@@ -149,7 +150,7 @@ public class CustomerResource {
 	@Operation(summary = "Create a new customer with the supplied informations", description = """
 			The request body must contain a valid customer description (sans id).
 	""")
-	@ApiResponse(responseCode = CODE_OK, description = "The created customer's informations",
+	@ApiResponse(responseCode = CODE_CREATED, description = "The customer was successfully created",
 		content = @Content(array = @ArraySchema(schema = @Schema(implementation = CustomerDto.class))))
 	@ApiResponse(responseCode = CODE_BAD_REQUEST, description = BAD_REQUEST_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
