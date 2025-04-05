@@ -39,6 +39,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * CustomerDto.java
@@ -46,6 +47,7 @@ import lombok.Data;
  * @author Gilles
  */
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @JsonInclude(value = Include.NON_NULL)
 @Schema(name = "Customer information")

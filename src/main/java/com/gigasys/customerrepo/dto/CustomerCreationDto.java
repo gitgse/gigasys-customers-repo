@@ -58,6 +58,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * CustomerCreationDto.java Classe portant les données permettant la création ou
@@ -67,6 +68,7 @@ import lombok.Data;
  */
 @Schema(name = "Customer creation data")
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class CustomerCreationDto {
 

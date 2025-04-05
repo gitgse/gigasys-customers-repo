@@ -19,6 +19,8 @@ import jakarta.validation.constraints.Size;
 import jakarta.ws.rs.QueryParam;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import static com.gigasys.customerrepo.common.Constants.*;
 
 /**
@@ -27,6 +29,7 @@ import static com.gigasys.customerrepo.common.Constants.*;
  * @author Gilles
  */
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class CustomerFilterDto {
 
