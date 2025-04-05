@@ -69,7 +69,7 @@ import lombok.Data;
 public class CustomerCreationDto {
 
 	@Hidden
-	private Integer customerId;
+	private Long customerId;
 
 	@NotNull
 	@Schema(example = CUSTOMER_CATEGORY_EXAMPLE, description = CUSTOMER_CATEGORY_DESCRIPTION)

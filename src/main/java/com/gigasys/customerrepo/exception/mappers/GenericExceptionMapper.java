@@ -1,7 +1,7 @@
 package com.gigasys.customerrepo.exception.mappers;
 
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_TECHNICAL_ERROR;
-import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.TECHNICAL_ERROR_DESCRRIPTION;
+import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.TECHNICAL_ERROR_DESCRIPTION;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
 	public Response toResponse(Throwable exception) {
 		logger.error(exception.getMessage(), exception);
 		
-		var error = new JsonError(CODE_TECHNICAL_ERROR, TECHNICAL_ERROR_DESCRRIPTION);
+		var error = new JsonError(CODE_TECHNICAL_ERROR, TECHNICAL_ERROR_DESCRIPTION);
 		
 		return Response.status(Status.INTERNAL_SERVER_ERROR)
 				.type(MediaType.APPLICATION_JSON)
