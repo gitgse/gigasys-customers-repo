@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.ws.rs.QueryParam;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import static com.gigasys.customerrepo.common.Constants.*;
 
@@ -25,6 +26,7 @@ import static com.gigasys.customerrepo.common.Constants.*;
  * Classe portant les champs permettant le filtrage de la liste des clients
  * @author Gilles
  */
+@AllArgsConstructor
 @Data
 public class CustomerFilterDto {
 

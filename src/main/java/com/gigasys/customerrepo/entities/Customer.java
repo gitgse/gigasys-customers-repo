@@ -51,7 +51,7 @@ public class Customer {
 	@SequenceGenerator(name = "customer_id_generator", sequenceName = "customers.customers_customer_id_seq",
 					   allocationSize = 5, initialValue = 1)
 	@Column(name = "customer_id")
-	private Integer customerId;
+	private Long customerId;
 
 	@Check(constraints = "category in ('r', 'c', 'p')")
 	@Enumerated(EnumType.STRING)

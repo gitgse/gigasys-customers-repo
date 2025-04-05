@@ -37,6 +37,7 @@ import com.gigasys.customerrepo.entities.Category;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -44,13 +45,14 @@ import lombok.Data;
  * DTO permettant la restitution des données d'un customer
  * @author Gilles
  */
+@AllArgsConstructor
 @Data
 @JsonInclude(value = Include.NON_NULL)
 @Schema(name = "Customer information")
 public class CustomerDto {
 
 	@Schema(requiredMode = RequiredMode.REQUIRED, example = CUSTOMER_ID_EXAMPLE, description = CUSTOMER_ID_DESCRIPTION)
-	private Integer customerId;
+	private Long customerId;
 
 	@Schema(requiredMode = RequiredMode.REQUIRED, example = CUSTOMER_CATEGORY_EXAMPLE, description = CUSTOMER_CATEGORY_DESCRIPTION)
 	private Category category;
