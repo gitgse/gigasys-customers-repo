@@ -7,6 +7,12 @@ import java.util.Objects;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+/**
+ * LocalDateRangeValidator.java
+ * Classe de validation qu'une date est comprise dans une plage
+ * Utilisée par l'annotation {@link LocalDateRange}l
+ * @author Gilles
+ */
 public class LocalDateRangeValidator implements ConstraintValidator<LocalDateRange, LocalDate> {
 
 	private LocalDate minDate;
