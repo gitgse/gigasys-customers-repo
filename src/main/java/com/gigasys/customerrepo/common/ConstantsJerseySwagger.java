@@ -15,9 +15,11 @@ public class ConstantsJerseySwagger {
 	public static final String QUERY = "query";
 	
 	public static final String CODE_OK = "200";
+	
+	public static final String CODE_NO_CONTENT = "204";
 
 	public static final String CODE_TECHNICAL_ERROR = "500";
-	public static final String TECHNICAL_ERROR_DESCRRIPTION = "An error occured on the server";
+	public static final String TECHNICAL_ERROR_DESCRIPTION = "An error occured on the server";
 	
 	public static final String CODE_NOT_FOUND = "404";
 	public static final String NOT_FOUND_DESCRIPTION = "The requested informations were not found";

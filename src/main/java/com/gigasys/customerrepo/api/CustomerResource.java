@@ -3,13 +3,14 @@ package com.gigasys.customerrepo.api;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.BAD_REQUEST_DESCRIPTION;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_BAD_REQUEST;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_NOT_FOUND;
+import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_NO_CONTENT;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_OK;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CODE_TECHNICAL_ERROR;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CUSTOMER_ID_DESCRIPTION;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.CUSTOMER_ID_EXAMPLE;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.ENDPOINT_CUSTOMERS;
 import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.NOT_FOUND_DESCRIPTION;
-import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.TECHNICAL_ERROR_DESCRRIPTION;
+import static com.gigasys.customerrepo.common.ConstantsJerseySwagger.TECHNICAL_ERROR_DESCRIPTION;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,6 +33,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -77,7 +79,7 @@ public class CustomerResource {
 		content = @Content(array = @ArraySchema(schema = @Schema(implementation = CustomerDto.class))))
 	@ApiResponse(responseCode = CODE_BAD_REQUEST, description = BAD_REQUEST_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
-	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRRIPTION,
+	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
 	public Response filterAll(@BeanParam @Valid CustomerFilterDto customerFilterDTO) {
 		return Response.ok().entity(customerService.filterAll(customerFilterDTO)).build();
@@ -98,9 +100,9 @@ public class CustomerResource {
 		content = @Content(schema = @Schema(implementation = CustomerDto.class)))
 	@ApiResponse(responseCode = CODE_NOT_FOUND, description = NOT_FOUND_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
-	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRRIPTION,
+	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
-	public Response one(@PathParam("id") @Parameter(example = CUSTOMER_ID_EXAMPLE, description = CUSTOMER_ID_DESCRIPTION) Integer id) {
+	public Response one(@PathParam("id") @Parameter(example = CUSTOMER_ID_EXAMPLE, description = CUSTOMER_ID_DESCRIPTION) Long id) {
 		return Response.ok().entity(customerService.getById(id)).build();
 	}
 
@@ -124,9 +126,9 @@ public class CustomerResource {
 		content = @Content(schema = @Schema(implementation = CustomerDto.class)))
 	@ApiResponse(responseCode = CODE_NOT_FOUND, description = NOT_FOUND_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
-	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRRIPTION,
+	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
-	public Response update(@PathParam("id") @Parameter(example = CUSTOMER_ID_EXAMPLE, description = CUSTOMER_ID_DESCRIPTION) Integer id,
+	public Response update(@PathParam("id") @Parameter(example = CUSTOMER_ID_EXAMPLE, description = CUSTOMER_ID_DESCRIPTION) Long id,
 						   @Valid CustomerCreationDto customerCreationDto) {
 		customerCreationDto.setCustomerId(id);
 		var savedCustomer = customerService.save(customerCreationDto);
@@ -151,7 +153,7 @@ public class CustomerResource {
 		content = @Content(array = @ArraySchema(schema = @Schema(implementation = CustomerDto.class))))
 	@ApiResponse(responseCode = CODE_BAD_REQUEST, description = BAD_REQUEST_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
-	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRRIPTION,
+	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRIPTION,
 		content = @Content(schema = @Schema(implementation = JsonError.class)))
 
 	public Response add(@Valid CustomerCreationDto customerCreationDto) throws URISyntaxException {
@@ -160,6 +162,20 @@ public class CustomerResource {
 		var savedCustomer = customerService.save(customerCreationDto);
 		return Response.created(new URI(ENDPOINT_CUSTOMERS + "/" + savedCustomer.getCustomerId())).entity(savedCustomer)
 				.build();
+	}
+	
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{id}")
+	@Operation(summary = "Delete an existing customer matching the specified id", description = """
+			If the id is not found, this service will still return an HTTP 204 since the desired state (no customer with this id) is achieved.
+			""")
+	@ApiResponse(responseCode = CODE_NO_CONTENT, description = "The customer was successfully removed from the database")
+	@ApiResponse(responseCode = CODE_TECHNICAL_ERROR, description = TECHNICAL_ERROR_DESCRIPTION,
+			content = @Content(schema = @Schema(implementation = JsonError.class)))
+	public Response delete(@PathParam("id") @Parameter(example = CUSTOMER_ID_EXAMPLE, description = CUSTOMER_ID_DESCRIPTION) Long id) {
+		customerService.delete(id);
+		return Response.noContent().build();
 	}
 
 }

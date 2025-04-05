@@ -60,10 +60,20 @@ public class CustomerServiceImpl implements CustomerService {
 	 * @see com.gigasys.customerrepo.service.CustomerService#getById(java.lang.Integer)
 	 */
 	@Override
-	public CustomerDto getById(Integer id) {
+	public CustomerDto getById(Long id) {
 		return customerMapper.toDto(
 				customerDao.findById(id).orElseThrow(() -> new NoResultException("Customer#" + id + " introuvable"))
 				);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see com.gigasys.customerrepo.service.CustomerService#delete(java.lang.Long)
+	 */
+	@Override
+	public void delete(Long id) {
+		customerDao.deleteById(id);
 	}
 
 }
