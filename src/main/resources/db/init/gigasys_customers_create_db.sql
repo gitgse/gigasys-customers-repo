@@ -1,11 +1,11 @@
 DROP DATABASE IF EXISTS gigasys_customers;
 
 CREATE DATABASE gigasys_customers;
+GRANT ALL ON DATABASE gigasys_customers TO appli;
 
 \connect gigasys_customers;
 
 CREATE SCHEMA customers;
-
 GRANT ALL ON SCHEMA customers TO appli;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA customers GRANT ALL ON TABLES TO appli;
