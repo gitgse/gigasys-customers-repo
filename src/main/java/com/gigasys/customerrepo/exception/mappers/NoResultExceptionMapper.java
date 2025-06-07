@@ -15,7 +15,7 @@ import jakarta.ws.rs.core.Response.Status;
 import jakarta.ws.rs.ext.ExceptionMapper;
 
 /**
- * NotFoundExceptionMapper.java
+ * NoResultExceptionMapper.java
  * Exception Mapper prenant en charge les exceptions NoResult
  * @author Gilles
  */

@@ -51,9 +51,9 @@ public class CustomerCriteriaDaoImpl implements CustomerCriteriaDao {
 			predicates.add(
 					cb.like(root.get(Customer_.name), '%' + filter.getName().toLowerCase(Locale.ROOT) + '%'));
 		}
-		if (Objects.nonNull(filter.getFirstName())) {
+		if (Objects.nonNull(filter.getFirstname())) {
 			predicates.add(
-					cb.like(root.get(Customer_.firstname), '%' + filter.getFirstName().toLowerCase(Locale.ROOT) + '%'));
+					cb.like(root.get(Customer_.firstname), '%' + filter.getFirstname().toLowerCase(Locale.ROOT) + '%'));
 		}
 		if (Objects.nonNull(filter.getEmail())) {
 			predicates.add(

@@ -25,7 +25,7 @@ public interface CustomerService {
 	 * @param id
 	 * @return
 	 */
-	public CustomerDto getById(Integer id);
+	public CustomerDto getById(Long id);
 
 	/**
 	 * Méthode permettant d'enregistrer un customer.
@@ -34,4 +34,12 @@ public interface CustomerService {
 	 * @return
 	 */
 	public CustomerDto save(CustomerCreationDto customerCreationDto);
+
+	/**
+	 * Méthode permettant de supprimer un customer.
+	 * @param id
+	 * @return
+	 */
+	public void delete(Long id);
+
 }

@@ -11,6 +11,6 @@ import com.gigasys.customerrepo.entities.Customer;
  * implémentées à partir de requêtes criteria
  * @author Gilles
  */
-public interface CustomerDao extends JpaRepository<Customer, Integer>, CustomerCriteriaDao {
+public interface CustomerDao extends JpaRepository<Customer, Long>, CustomerCriteriaDao {
 
 }
